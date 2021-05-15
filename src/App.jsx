@@ -1,4 +1,5 @@
 import React from "react";
+import { ethers } from "ethers";
 
 //get web3
 import GetWe3Provider from "./Context/getWe3Provider";
