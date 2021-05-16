@@ -1,5 +1,6 @@
 import React, { createContext, useEffect } from 'react';
 import { votingContractABI } from '../ABI/votingContractABI';
+import { ethers } from 'ethers'
 require('dotenv').config();
 
 export const Web3Context = createContext()
