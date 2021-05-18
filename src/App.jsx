@@ -1,14 +1,16 @@
 import React from "react";
-import { ethers } from "ethers";
 
-//get web3
-import GetWe3Provider from "./Context/getWe3Provider";
+//Components
+import Navbar from "./Components/Navbar";
+
+//Provider
+import VotingContractContext from "./Context/votingContractProvider";
 
 const App = () => {
   return (
-    <GetWe3Provider>
-      <h1>hey there</h1>
-    </GetWe3Provider>
+    <VotingContractContext>
+      <Navbar />
+    </VotingContractContext>
   );
 };
 
