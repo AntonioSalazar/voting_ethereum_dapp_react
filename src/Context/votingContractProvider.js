@@ -9,6 +9,8 @@ export const VotingContext = createContext();
 const VotingContractContext = props => {
 
     const [ contractInstance, setContranctInstance ] = useState({});
+    const [ currentAccount, setCurrentAccount ] = useState('');
+    console.log(currentAccount);
 
     const connectToVotingContract = async () => {
         let web3 = new Web3(window.ethereum);
@@ -18,8 +20,17 @@ const VotingContractContext = props => {
         setContranctInstance(votingContract);
     }
 
+    const getCurrentAccount = async() => {
+        let web3 = new Web3(window.ethereum);
+        const accounts = await web3.eth.getAccounts();
+        setCurrentAccount(accounts[0])
+        //detect when the user changes the metamask account, currentAccount will always be the selected user account
+        window.ethereum.on('accountsChanged', accounts => setCurrentAccount(accounts[0])) 
+    }
+
     useEffect(() => {
         connectToVotingContract()
+        getCurrentAccount()
     }, [])
 
     return (
